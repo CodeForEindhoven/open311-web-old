@@ -16,18 +16,18 @@
 	],
 	"private": true,
 	"scripts": {
-		"start": "cd build && npm start",
-		"build": "./node_modules/.bin/gulp build"
+		"build": "./node_modules/.bin/gulp build",
+		"start": "./node_modules/.bin/gulp run"
 	},
 	"repository": {
 		"type": "git",
 		"url": "http://github.com/codeforeindhoven/open311-api.git"
 	},
 	"dependencies": {
-		"gulp": "~3.9.1",
-		"gulp-include": "~2.1.0",
-		"gulp-install": "~0.6.0",
-		"gulp-less": "~3.0.5",
+		"gulp": "^3.9.1",
+		"gulp-include": "^2.1.0",
+		"gulp-install": "^0.6.0",
+		"gulp-less": "^3.0.5",
 		"gulp-concat": "^2.6.0",
 		"gulp-rename": "^1.2.2",
 		"gulp-sourcemaps": "^1.6.0",

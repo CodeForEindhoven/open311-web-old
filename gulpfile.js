@@ -1,11 +1,11 @@
 var gulp = require('gulp'),
-	less = require('gulp-less'),
-	include = require("gulp-include"),
-	install = require("gulp-install"),
-	gp_concat = require('gulp-concat'),
-	gp_rename = require('gulp-rename'),
-	gp_uglify = require('gulp-uglify'),
-	gp_sourcemaps = require('gulp-sourcemaps');
+less = require('gulp-less'),
+include = require("gulp-include"),
+install = require("gulp-install"),
+gp_concat = require('gulp-concat'),
+gp_rename = require('gulp-rename'),
+gp_uglify = require('gulp-uglify'),
+gp_sourcemaps = require('gulp-sourcemaps');
 
 var spawn = require('child_process').spawn;
 var path = require('path');
@@ -48,49 +48,49 @@ gulp.task('server', ['copy_server' ,'install_npm']);
 
 gulp.task('copy_server',function(){
 	return gulp.src(dirs.serversrc+'/**/*')
-		.pipe(gulp.dest(dirs.serverbuild+'/'));
+	.pipe(gulp.dest(dirs.serverbuild+'/'));
 });
 
 gulp.task('install_npm',function(){
 	return gulp.src([dirs.serverbuild+'/package.json'])
-		.pipe(install());
+	.pipe(install());
 });
 
 /* Build client */
 gulp.task('client', ['js', 'less', 'html', 'img']);
 
 gulp.task('js', function(){
-  return gulp.src([
-      dirs.clientsrc+'/js/open311.js',
-      dirs.clientsrc+'/js/modal.js',
-      dirs.clientsrc+'/js/form/*.js',
-      dirs.clientsrc+'/js/overview/*.js'
-    ])
-    //.pipe(gp_sourcemaps.init())
-    .pipe(gp_concat('open311.js'))
-    .pipe(gulp.dest(dirs.clientbuild+'/js'))
-    .pipe(gp_rename('open311.min.js'))
-    .pipe(gp_uglify())
-    .pipe(gp_sourcemaps.write('./'))
-    .pipe(gulp.dest(dirs.clientbuild+'/js'));
+	return gulp.src([
+		dirs.clientsrc+'/js/open311.js',
+		dirs.clientsrc+'/js/modal.js',
+		dirs.clientsrc+'/js/form/*.js',
+		dirs.clientsrc+'/js/overview/*.js'
+	])
+	//.pipe(gp_sourcemaps.init())
+	.pipe(gp_concat('open311.js'))
+	.pipe(gulp.dest(dirs.clientbuild+'/js'))
+	.pipe(gp_rename('open311.min.js'))
+	.pipe(gp_uglify())
+	.pipe(gp_sourcemaps.write('./'))
+	.pipe(gulp.dest(dirs.clientbuild+'/js'));
 });
 
 //compile Less files to Css
 gulp.task('less', function () {
-    return gulp.src(dirs.clientsrc + '/style/style.less')
-        .pipe(less({
-            paths: [ path.join(__dirname, 'less', 'includes') ]
-        }))
-        .pipe(gulp.dest(dirs.clientbuild+'/style'));
+	return gulp.src(dirs.clientsrc + '/style/style.less')
+	.pipe(less({
+		paths: [ path.join(__dirname, 'less', 'includes') ]
+	}))
+	.pipe(gulp.dest(dirs.clientbuild+'/style'));
 });
 
 //simply copy html and static files
 gulp.task('html', function(){
-    return gulp.src(dirs.clientsrc+'/*.html')
-        .pipe(gulp.dest(dirs.clientbuild+'/'));
+	return gulp.src(dirs.clientsrc+'/*.html')
+	.pipe(gulp.dest(dirs.clientbuild+'/'));
 });
 
 gulp.task('img', function(){
-    return gulp.src(dirs.clientsrc + '/img/*')
-        .pipe(gulp.dest(dirs.clientbuild + '/img'));
+	return gulp.src(dirs.clientsrc + '/img/*')
+	.pipe(gulp.dest(dirs.clientbuild + '/img'));
 });

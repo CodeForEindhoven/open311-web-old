@@ -12,4 +12,4 @@ COPY ./src /open311/src
 RUN npm install && npm run build
 
 EXPOSE 80
-CMD ["gulp", "run"]
+CMD ["npm", "start"]
