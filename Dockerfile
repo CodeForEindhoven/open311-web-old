@@ -11,9 +11,5 @@ COPY ./src /open311/src
 
 RUN npm install && npm run build
 
-# Add image configuration and scripts
-ADD start.sh /start.sh
-RUN chmod 755 /*.sh
-
 EXPOSE 80
 CMD ["gulp", "run"]
