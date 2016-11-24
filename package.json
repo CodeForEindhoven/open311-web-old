@@ -1,15 +1,37 @@
 {
-  "name": "open311-web",
-  "version": "0.1.0",
-  "description": "",
-  "main": "main.js",
-  "dependencies": {
-    "express": "^4.14.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": ""
+	"name": "open311-web",
+	"description": "Generic Web App for an open311 api backend",
+	"version": "0.0.1",
+	"license": "GPL-3.0+",
+	"author": {
+		"name": "Marcel Goethals",
+		"email": "m.goethals@eindhoven.nl",
+		"url": "http://www.eindhoven.nl"
+	},
+	"contributors": [
+		{
+			"name": "Milo van der Linden",
+			"email": "milo.vd.linden@eindhoven.nl"
+		}
+	],
+	"private": true,
+	"scripts": {
+		"start": "cd build && npm start",
+		"build": "./node_modules/.bin/gulp build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/codeforeindhoven/open311-api.git"
+	},
+	"dependencies": {
+		"gulp": "~3.9.1",
+		"gulp-include": "~2.1.0",
+		"gulp-install": "~0.6.0",
+		"gulp-less": "~3.0.5",
+		"gulp-concat": "^2.6.0",
+		"gulp-rename": "^1.2.2",
+		"gulp-sourcemaps": "^1.6.0",
+		"gulp-uglify": "^1.5.3",
+		"http-server": "^0.9.0"
+	}
 }

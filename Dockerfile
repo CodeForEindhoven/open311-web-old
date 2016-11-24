@@ -1,16 +1,19 @@
-FROM node:argon
+FROM node:6
 
-# Create app directory
-RUN mkdir -p /app
-WORKDIR /app
+# Create open311-api directory
+RUN mkdir -p /open311
+WORKDIR /open311
 
 # Install
-COPY package.json /app
-COPY main.js /app
-COPY ./static /app/static
+COPY package.json /open311
+COPY gulpfile.js /open311
+COPY ./src /open311/src
 
-# Bundle
-RUN npm install
+RUN npm install && npm run build
+
+# Add image configuration and scripts
+ADD start.sh /start.sh
+RUN chmod 755 /*.sh
 
 EXPOSE 80
-CMD ["node","main.js"]
+CMD ["gulp", "run"]
